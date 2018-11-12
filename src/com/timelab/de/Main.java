@@ -5,7 +5,6 @@ public class Main {
     public static void test(){
         System.out.println("flasche");
         System.out.println("buch");
-
     }
 
     public static void main(String[] args) {
