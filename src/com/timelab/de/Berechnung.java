@@ -61,7 +61,7 @@ public class Berechnung {
         while(difPosEndeX != 0 && difPosEndeY != 0) {
             if (difPosEndeX > difPosEndeY) {
                 positionX = positionX + 1;
-                //Testen ob dort ein Hindernis ist
+                //Test for Barrier
                 if (!testeAufHindernis(p_array, positionX, positionY)) {
                        p_array[positionX][positionY] = 5;
                 } else {
@@ -69,7 +69,7 @@ public class Berechnung {
                 }
             } else if (difPosEndeX < difPosEndeY) {
                 positionY = positionY + 1;
-                //Testen ob dort ein Hindernis ist
+                //Test for barrier
                 if (!testeAufHindernis(p_array, positionX, positionY)) {
                     p_array[positionX][positionY] = 5;
                 } else {
@@ -87,6 +87,7 @@ public class Berechnung {
                     }
                 }
             }
+            //Calculate new Diff
             difPosEndeX = endeX - positionX;
             difPosEndeY = endeY - positionY;
         }
