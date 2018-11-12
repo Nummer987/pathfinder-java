@@ -1,6 +1,8 @@
 package com.timelab.de;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
 
@@ -25,5 +27,23 @@ public class Window extends JFrame {
                 add(pixelFeld[i][j]);
             }
         }
+
+        bReset = new JButton("Reset");
+        add(bReset);
+        bStart = new JButton("Start");
+        add(bStart);
+
+        bReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        bStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }
