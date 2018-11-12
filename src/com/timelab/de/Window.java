@@ -14,8 +14,8 @@ public class Window extends JFrame {
     private int modus = 1; //1 start, 2 ende, 3 hindernis
 
     public Window() {
-        setLayout(new FlowLayout());
-        setSize(400,400);
+        setLayout(null);
+        setSize(630,520);
         setTitle("Pathfinder");
         setResizable(false);
         setLocationRelativeTo(null);
@@ -31,12 +31,14 @@ public class Window extends JFrame {
     }
 
     private void addGrid() {
-        JPanel grid = new JPanel(new GridLayout(9,9,2,2));
+        JPanel grid = new JPanel(null);
+        grid.setBounds(10,10,500,500);
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 JPanel jPanel = new JPanel();
-                jPanel.add(new JPanel());
                 jPanel.setBackground(Color.WHITE);
+                jPanel.setBounds(i*(500/9),j*(500/9),(500/10),(500/10));
+
                 int finalI = i;
                 int finalJ = j;
                 jPanel.addMouseListener(new MouseInputListener() {
@@ -136,12 +138,16 @@ public class Window extends JFrame {
 
     //fügt auch einen neuen Manager hinzu
     private void addMenu() {
-        JPanel menu = new JPanel(new GridLayout(3,1));
+        JPanel menu = new JPanel(null);
+        menu.setBounds(510,10,100,200);
         bReset = new JButton("Reset");
+        bReset.setBounds(0,0,100,30);
         menu.add(bReset);
         bModus = new JButton("Start setzen");
+        bModus.setBounds(0,35,100,30);
         menu.add(bModus);
         bStart = new JButton("Start");
+        bStart.setBounds(0,70,100,30);
         menu.add(bStart);
         add(menu);
 
