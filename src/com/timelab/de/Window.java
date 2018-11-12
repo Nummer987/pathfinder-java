@@ -21,14 +21,14 @@ public class Window extends JFrame {
 
     public Window() {
         setLayout(null);
-        setSize(640,520);
+        setSize(640,540);
         setTitle("Pathfinder");
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         addMenu();
-        makeNewGrid(10);
+        makeNewGrid(80);
 
         setVisible(true);
     }
@@ -84,7 +84,18 @@ public class Window extends JFrame {
 
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        if(modus == 1) {
+                            removeStart(p_size);
+                            e.getComponent().setBackground(Color.GREEN);
+                        }
+                        else if(modus == 2) {
+                            removeEnd(p_size);
+                            e.getComponent().setBackground(Color.RED);
+                        }
+                        else if(modus == 3)
+                            e.getComponent().setBackground(Color.BLACK);
 
+                        feld[finalI][finalJ] = modus;
                     }
 
                     @Override
@@ -168,7 +179,7 @@ public class Window extends JFrame {
         bReset.setBounds(0,0,100,30);
         menu.add(bReset);
 
-        bModus = new JButton("Start setzen");
+        bModus = new JButton("Set Start");
         bModus.setBounds(0,35,100,30);
         menu.add(bModus);
 
@@ -194,17 +205,17 @@ public class Window extends JFrame {
         bModus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(bModus.getText().equals("Start setzen")) {
+                if(bModus.getText().equals("Set start")) {
                     modus = 2;
-                    bModus.setText("Ende setzen");
+                    bModus.setText("Set End");
                 }
-                else if(bModus.getText().equals("Ende setzen")) {
+                else if(bModus.getText().equals("Set End")) {
                     modus = 3;
-                    bModus.setText("Hindernis setzen");
+                    bModus.setText("Set Wall");
                 }
                 else {
                     modus = 1;
-                    bModus.setText("Start setzen");
+                    bModus.setText("Set start");
                 }
             }
         });
