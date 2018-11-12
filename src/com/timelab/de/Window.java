@@ -11,8 +11,9 @@ import java.awt.event.MouseEvent;
 
 public class Window extends JFrame {
 
-    public static JButton bReset,bStart,bModus;
+    public static JButton bReset,bStart,bModus,bCreate;
     private JSlider jSlider;
+    private JLabel jLabelForSlider;
     private static JPanel[][] panels;
     private JPanel grid;
 
@@ -20,17 +21,19 @@ public class Window extends JFrame {
     private int modus = 1; //1 start, 2 ende, 3 hindernis
 
     private boolean mouseActualPressed = false;
+    private int actualGridSize;
 
-    public Window() {
+    public Window(int p_gridSize) {
         setLayout(null);
-        setSize(640,540);
-        setTitle("Pathfinder");
+        setSize(640,550);
+        setTitle("Pathfinder "+p_gridSize+" x "+p_gridSize);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        actualGridSize = p_gridSize;
 
         addMenu();
-        makeNewGrid(80);
+        makeNewGrid(p_gridSize);
 
         setVisible(true);
     }
@@ -53,7 +56,7 @@ public class Window extends JFrame {
             for (int j = 0; j < p_size; j++) {
                 JPanel jPanel = new JPanel();
                 jPanel.setBackground(Color.WHITE);
-                jPanel.setBounds(i*(500/p_size),j*(500/p_size),(500/(p_size+1)),(500/(p_size+1)));
+                jPanel.setBounds(i*(500/p_size),j*(500/p_size),(500/(p_size)),(500/(p_size)));
 
                 int finalI = i;
                 int finalJ = j;
@@ -119,7 +122,6 @@ public class Window extends JFrame {
                 });
 
                 panels[i][j] = jPanel;
-                System.out.println(panels);
                 grid.add(jPanel);
             }
         }
@@ -177,7 +179,7 @@ public class Window extends JFrame {
     //also addsa new Manager
     private void addMenu() {
         JPanel menu = new JPanel(null);
-        menu.setBounds(520,10,100,200);
+        menu.setBounds(520,10,100,520);
 
         bReset = new JButton("Reset");
         bReset.setBounds(0,0,100,30);
@@ -191,15 +193,24 @@ public class Window extends JFrame {
         bStart.setBounds(0,70,100,30);
         menu.add(bStart);
 
-        jSlider = new JSlider(JSlider.HORIZONTAL,4,20,4);
-        jSlider.setBounds(0,105,100,30);
+        jSlider = new JSlider(JSlider.HORIZONTAL,4,80,actualGridSize);
+        jSlider.setBounds(0,420,100,30);
         jSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                //
+                jLabelForSlider.setText(jSlider.getValue()+" x "+jSlider.getValue());
             }
         });
         menu.add(jSlider);
+
+        jLabelForSlider = new JLabel(actualGridSize+" x "+actualGridSize);
+        jLabelForSlider.setHorizontalTextPosition(JLabel.CENTER);
+        jLabelForSlider.setBounds(30,440,100,30);
+        menu.add(jLabelForSlider);
+
+        bCreate = new JButton("New Grid");
+        bCreate.setBounds(0,470,100,20);
+        menu.add(bCreate);
 
         add(menu);
 
@@ -221,6 +232,13 @@ public class Window extends JFrame {
                     modus = 1;
                     bModus.setText("Set Start");
                 }
+            }
+        });
+        bCreate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Window(jSlider.getValue());
+                setVisible(false);
             }
         });
     }
