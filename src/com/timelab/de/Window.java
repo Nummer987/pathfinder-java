@@ -11,33 +11,42 @@ public class Window extends JFrame {
     public static int feld[][];
     public static JButton bReset,bStart,bModus;
     private static JPanel[][] panels;
+    private JPanel grid;
     private int modus = 1; //1 start, 2 ende, 3 hindernis
 
     public Window() {
         setLayout(null);
-        setSize(630,520);
+        setSize(640,520);
         setTitle("Pathfinder");
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        feld = new int[9][9];
-        panels = new JPanel[9][9];
-
-        addGrid();
         addMenu();
+        makeNewGrid(100);
 
         setVisible(true);
     }
 
-    private void addGrid() {
-        JPanel grid = new JPanel(null);
+    private void makeNewGrid(int p_size) {
+        feld = new int[p_size][p_size];
+        panels = new JPanel[p_size][p_size];
+        addGrid(p_size);
+    }
+
+    private void addGrid(int p_size) {
+        grid = new JPanel(null);
         grid.setBounds(10,10,500,500);
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
+        addGridPixels(p_size);
+        add(grid);
+    }
+
+    private void addGridPixels(int p_size) {
+        for (int i = 0; i < p_size; i++) {
+            for (int j = 0; j < p_size; j++) {
                 JPanel jPanel = new JPanel();
                 jPanel.setBackground(Color.WHITE);
-                jPanel.setBounds(i*(500/9),j*(500/9),(500/10),(500/10));
+                jPanel.setBounds(i*(500/p_size),j*(500/p_size),(500/(p_size+1)),(500/(p_size+1)));
 
                 int finalI = i;
                 int finalJ = j;
@@ -45,11 +54,11 @@ public class Window extends JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         if(modus == 1) {
-                            removeStart();
+                            removeStart(p_size);
                             e.getComponent().setBackground(Color.GREEN);
                         }
                         else if(modus == 2) {
-                            removeEnd();
+                            removeEnd(p_size);
                             e.getComponent().setBackground(Color.RED);
                         }
                         else if(modus == 3)
@@ -93,12 +102,12 @@ public class Window extends JFrame {
                 grid.add(jPanel);
             }
         }
-        add(grid);
     }
 
-    private static void removeStart() {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
+
+    private static void removeStart(int p_gridSize) {
+        for (int i = 0; i < p_gridSize; i++) {
+            for (int j = 0; j < p_gridSize; j++) {
                 if(feld[i][j] == 1) {
                     panels[i][j].setBackground(Color.WHITE);
                     feld[i][j] = 0;
@@ -107,9 +116,9 @@ public class Window extends JFrame {
         }
     }
 
-    private static void removeEnd() {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
+    private static void removeEnd(int p_gridSize) {
+        for (int i = 0; i < p_gridSize; i++) {
+            for (int j = 0; j < p_gridSize; j++) {
                 if(feld[i][j] == 2) {
                     panels[i][j].setBackground(Color.WHITE);
                     feld[i][j] = 0;
@@ -119,8 +128,8 @@ public class Window extends JFrame {
     }
 
     public static void gridAkt(int[][] p_feld){
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
+        for (int i = 0; i < p_feld.length; i++) {
+            for (int j = 0; j < p_feld.length; j++) {
                 feld[i][j] = p_feld[i][j];
                 if(p_feld[i][j] == 0)
                     panels[i][j].setBackground(Color.WHITE);
@@ -136,10 +145,19 @@ public class Window extends JFrame {
         }
     }
 
+    public static void clearGrid() {
+        for (int i = 0; i < feld.length; i++) {
+            for (int j = 0; j < feld.length; j++) {
+                feld[i][j] = 0;
+                panels[i][j].setBackground(Color.WHITE);
+            }
+        }
+    }
+
     //fügt auch einen neuen Manager hinzu
     private void addMenu() {
         JPanel menu = new JPanel(null);
-        menu.setBounds(510,10,100,200);
+        menu.setBounds(520,10,100,200);
         bReset = new JButton("Reset");
         bReset.setBounds(0,0,100,30);
         menu.add(bReset);
