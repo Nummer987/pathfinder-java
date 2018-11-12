@@ -14,7 +14,7 @@ public class Berechnung {
     public void arrayAusgeben(int[][] p_array){
         for(int i=0; i<p_array.length;i++){
             for(int j = 0; j<p_array.length;j++){
-                System.out.println(p_array[i][j]);
+                System.out.print(p_array[i][j] + " ");
 
             }
             System.out.println();
