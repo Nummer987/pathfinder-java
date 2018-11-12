@@ -6,6 +6,7 @@ public class Window extends JFrame {
     public Window() {
         setLayout(null);
         setVisible(true);
-        setSize(400,300);
+        setSize(900,900);
+
     }
 }
