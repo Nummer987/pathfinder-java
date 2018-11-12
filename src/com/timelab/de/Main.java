@@ -11,9 +11,12 @@ public class Main {
             }
         }
         meinArray[1][1] = 1;
-        meinArray[5][5] = 2;
+        meinArray[8][6] = 2;
+        meinArray[5][3] = 3;
         new Window();
         Berechnung berechnung = new Berechnung();
+        berechnung.arrayAusgeben(meinArray);
         berechnung.methode1(meinArray);
+        berechnung.arrayAusgeben(meinArray);
     }
 }
