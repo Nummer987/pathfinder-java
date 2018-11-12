@@ -17,6 +17,7 @@ public class Window extends JFrame {
         setLayout(new FlowLayout());
         setVisible(true);
         setSize(400,400);
+        setTitle("Pathfinder");
 
         feld = new int[9][9];
         panels = new JPanel[9][9];
