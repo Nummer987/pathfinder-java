@@ -30,7 +30,7 @@ public class Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         addMenu();
-        makeNewGrid(80);
+        makeNewGrid(20);
 
         setVisible(true);
     }
