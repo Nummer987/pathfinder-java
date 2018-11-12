@@ -20,7 +20,6 @@ public class Manager implements ActionListener {
             //TODO
 
             Berechnung berechnung = new Berechnung();
-            berechnung.arrayAusgeben(Window.feld);
             Window.gridAkt(berechnung.methode1(Window.feld));
         }
     }
