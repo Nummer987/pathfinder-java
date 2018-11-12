@@ -69,9 +69,9 @@ public class Berechnung {
             difPosEndeX = endeX - positionX;
             difPosEndeY = endeY - positionY;
         }
-        int[][] fertigerWeg = p_array;
+
         System.out.println("weg berechent!");
-        return new int[9][9];
+        return p_array;
     }
 
     public Berechnung(){
