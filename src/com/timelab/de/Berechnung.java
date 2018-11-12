@@ -55,29 +55,34 @@ public class Berechnung {
         int difPosEndeY = endeY - positionY;
 
         while(difPosEndeX != 0 && difPosEndeY != 0) {
-            if (difPosEndeX >= difPosEndeY) {
+            if (difPosEndeX > difPosEndeY) {
                 positionX = positionX + 1;
                 //Testen ob dort ein Hindernis ist
-                if(!testeAufHindernis(p_array, positionX, positionY)) {
+                if (!testeAufHindernis(p_array, positionX, positionY)) {
                     p_array[positionX][positionY] = 5;
+                } else {
+                    p_array[positionX][positionY] = 4;
                 }
-                else{
+            } else if (difPosEndeX < difPosEndeY) {
+                positionY = positionY + 1;
+                //Testen ob dort ein Hindernis ist
+                if (!testeAufHindernis(p_array, positionX, positionY)) {
+                    p_array[positionX][positionY] = 5;
+                } else {
                     p_array[positionX][positionY] = 4;
                 }
             } else {
+                positionX = positionX + 1;
                 positionY = positionY + 1;
-                //Testen ob dort ein Hindernis ist
-                if(!testeAufHindernis(p_array, positionX, positionY)){
+                if (!testeAufHindernis(p_array, positionX, positionY)) {
                     p_array[positionX][positionY] = 5;
-                }
-                else{
+                } else {
                     p_array[positionX][positionY] = 4;
                 }
             }
             difPosEndeX = endeX - positionX;
             difPosEndeY = endeY - positionY;
         }
-        arrayAusgeben(p_array);
         System.out.println("weg berechent!");
         return p_array;
     }
