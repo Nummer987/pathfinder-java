@@ -1,5 +1,4 @@
 package com.timelab.de;
-import javafx.geometry.Orientation;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -29,7 +28,7 @@ public class Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         addMenu();
-        makeNewGrid(100);
+        makeNewGrid(10);
 
         setVisible(true);
     }

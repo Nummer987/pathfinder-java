@@ -78,16 +78,19 @@ public class Berechnung {
             } else {
                 positionX = positionX + 1;
                 positionY = positionY + 1;
-                if (!testeAufHindernis(p_array, positionX, positionY)) {
+
+                if(positionX != endeX && positionY != endeY){
+                    if (!testeAufHindernis(p_array, positionX, positionY)) {
                     p_array[positionX][positionY] = 5;
-                } else {
+                    } else {
                     p_array[positionX][positionY] = 4;
+                    }
                 }
             }
             difPosEndeX = endeX - positionX;
             difPosEndeY = endeY - positionY;
         }
-        System.out.println("weg berechent!");
+        System.out.println("Weg berechent!");
         return p_array;
     }
 
