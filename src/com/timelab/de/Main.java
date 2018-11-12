@@ -9,7 +9,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("Pathfinder tool6000");
+        System.out.println("Pathfinder tool60000");
         new Window();
     }
 }
