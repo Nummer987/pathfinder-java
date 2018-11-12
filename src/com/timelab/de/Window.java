@@ -36,7 +36,6 @@ public class Window extends JFrame {
                 jPanel.addMouseListener(new MouseInputListener() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        feld[finalI][finalJ] = modus;
                         if(modus == 1) {
                             removeStart();
                             e.getComponent().setBackground(Color.GREEN);
@@ -47,6 +46,8 @@ public class Window extends JFrame {
                         }
                         else if(modus == 3)
                             e.getComponent().setBackground(Color.BLACK);
+
+                        feld[finalI][finalJ] = modus;
                     }
 
                     @Override
@@ -101,7 +102,7 @@ public class Window extends JFrame {
     private static void removeEnd() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if(feld[i][j] == 3) {
+                if(feld[i][j] == 2) {
                     panels[i][j].setBackground(Color.WHITE);
                     feld[i][j] = 0;
                 }
