@@ -1,5 +1,9 @@
 package com.timelab.de;
+import javafx.geometry.Orientation;
+
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,10 +12,12 @@ import java.awt.event.MouseEvent;
 
 public class Window extends JFrame {
 
-    public static int feld[][];
     public static JButton bReset,bStart,bModus;
+    private JSlider jSlider;
     private static JPanel[][] panels;
     private JPanel grid;
+
+    public static int feld[][];
     private int modus = 1; //1 start, 2 ende, 3 hindernis
 
     public Window() {
@@ -99,11 +105,11 @@ public class Window extends JFrame {
                 });
 
                 panels[i][j] = jPanel;
+                System.out.println(panels);
                 grid.add(jPanel);
             }
         }
     }
-
 
     private static void removeStart(int p_gridSize) {
         for (int i = 0; i < p_gridSize; i++) {
@@ -154,19 +160,33 @@ public class Window extends JFrame {
         }
     }
 
-    //fügt auch einen neuen Manager hinzu
+    //also addsa new Manager
     private void addMenu() {
         JPanel menu = new JPanel(null);
         menu.setBounds(520,10,100,200);
+
         bReset = new JButton("Reset");
         bReset.setBounds(0,0,100,30);
         menu.add(bReset);
+
         bModus = new JButton("Start setzen");
         bModus.setBounds(0,35,100,30);
         menu.add(bModus);
+
         bStart = new JButton("Start");
         bStart.setBounds(0,70,100,30);
         menu.add(bStart);
+
+        jSlider = new JSlider(JSlider.HORIZONTAL,4,20,4);
+        jSlider.setBounds(0,105,100,30);
+        jSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                //
+            }
+        });
+        menu.add(jSlider);
+
         add(menu);
 
         Manager manager = new Manager();
