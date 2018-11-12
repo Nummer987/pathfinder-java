@@ -37,10 +37,14 @@ public class Window extends JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         feld[finalI][finalJ] = modus;
-                        if(modus == 1)
+                        if(modus == 1) {
+                            removeStart();
                             e.getComponent().setBackground(Color.GREEN);
-                        else if(modus == 2)
+                        }
+                        else if(modus == 2) {
+                            removeEnd();
                             e.getComponent().setBackground(Color.RED);
+                        }
                         else if(modus == 3)
                             e.getComponent().setBackground(Color.BLACK);
                     }
@@ -83,9 +87,32 @@ public class Window extends JFrame {
         add(grid);
     }
 
+    private static void removeStart() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if(feld[i][j] == 1) {
+                    panels[i][j].setBackground(Color.WHITE);
+                    feld[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    private static void removeEnd() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if(feld[i][j] == 3) {
+                    panels[i][j].setBackground(Color.WHITE);
+                    feld[i][j] = 0;
+                }
+            }
+        }
+    }
+
     public static void gridAkt(int[][] p_feld){
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
+                feld[i][j] = p_feld[i][j];
                 if(p_feld[i][j] == 0)
                     panels[i][j].setBackground(Color.WHITE);
                 else if(p_feld[i][j] == 1)
