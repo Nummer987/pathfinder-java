@@ -30,6 +30,7 @@ public class Window extends JFrame {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 JPanel jPanel = new JPanel();
+                jPanel.add(new JPanel());
                 jPanel.setBackground(Color.WHITE);
                 int finalI = i;
                 int finalJ = j;
