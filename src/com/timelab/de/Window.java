@@ -122,6 +122,8 @@ public class Window extends JFrame {
                     panels[i][j].setBackground(Color.RED);
                 else if(p_feld[i][j] == 3)
                     panels[i][j].setBackground(Color.BLACK);
+                else if(p_feld[i][j] == 4)
+                    panels[i][j].setBackground(Color.YELLOW);
             }
         }
     }
