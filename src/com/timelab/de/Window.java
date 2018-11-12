@@ -69,6 +69,11 @@ public class Window extends JFrame {
         add(grid);
     }
 
+    public static void gridAkt(int[][] p_feld){
+
+
+    }
+
     //fügt auch einen neuen Manager hinzu
     private void addMenu() {
         JPanel menu = new JPanel(new GridLayout(2,1));

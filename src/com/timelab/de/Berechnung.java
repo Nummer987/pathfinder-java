@@ -11,17 +11,11 @@ public class Berechnung {
         }
     }
 
-    public void arrayAusgeben(int[][] p_array){
-        for(int i=0; i<p_array.length;i++){
-            for(int j = 0; j<p_array.length;j++){
-                System.out.print(p_array[i][j]+ " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
+    public int[][] arrayAusgeben(int[][] p_array){
+        return p_array;
     }
 
-    public void methode1(int[][] p_array){
+    public int[][] methode1(int[][] p_array){
         //Vars
         int startX = 0;
         int startY = 0;
@@ -75,8 +69,8 @@ public class Berechnung {
             difPosEndeX = endeX - positionX;
             difPosEndeY = endeY - positionY;
         }
-
-
+        int[][] fertigerWeg = p_array;
+        return fertigerWeg;
     }
 
     public Berechnung(){
