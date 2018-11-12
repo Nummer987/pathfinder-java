@@ -2,13 +2,23 @@ package com.timelab.de;
 
 public class Berechnung {
 
-    public void arrayFuellen(int[][] p_array){
+    private boolean testeAufHindernis(int[][] p_array, int p_x, int p_y){
+        if(p_array[p_x][p_y] != 3) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void arrayAusgeben(int[][] p_array){
         for(int i=0; i<p_array.length;i++){
             for(int j = 0; j<p_array.length;j++){
-                p_array[i][j] = 0;
+                System.out.print(p_array[i][j]+ " ");
             }
+            System.out.println();
         }
-
+        System.out.println();
     }
 
     public void methode1(int[][] p_array){
@@ -38,27 +48,31 @@ public class Berechnung {
 
         int positionX = startX;
         int positionY = startY;
-        int difPosEndeX = positionX - endeX;
-        int difPosEndeY = positionY - endeY;
+        int difPosEndeX = endeX - positionX;
+        int difPosEndeY = endeY - positionY;
 
         while(difPosEndeX != 0 && difPosEndeY != 0) {
             if (difPosEndeX >= difPosEndeY) {
-                positionX++;
-                p_array[positionX][positionY] = 4;
+                positionX = positionX + 1;
+                if(!testeAufHindernis(p_array, positionX, positionY)) {
+                    p_array[positionX][positionY] = 5;
+                }
+                else{
+                    p_array[positionX][positionY] = 4;
+                }
             } else {
-                positionY++;
-                p_array[positionX][positionY] = 4;
+                positionY = positionY + 1;
+                if(!testeAufHindernis(p_array, positionX, positionY)){
+                    p_array[positionX][positionY] = 5;
+                }
+                else{
+                    p_array[positionX][positionY] = 4;
+                }
             }
-            difPosEndeX = positionX - endeX;
-            difPosEndeY = positionY - endeY;
+            difPosEndeX = endeX - positionX;
+            difPosEndeY = endeY - positionY;
         }
 
-        for(int i=0; i<p_array.length;i++){
-            for(int j = 0; j<p_array.length;j++){
-                System.out.print(p_array[i][j]+ " ");
-            }
-            System.out.println();
-        }
 
     }
 
