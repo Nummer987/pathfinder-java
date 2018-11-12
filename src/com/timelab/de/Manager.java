@@ -18,7 +18,6 @@ public class Manager implements ActionListener {
             Window.gridAkt(new int[9][9]);
         } else if(e.getSource() == Window.bStart) {
             Berechnung berechnung = new Berechnung();
-            berechnung.arrayAusgeben(Window.feld);
             Window.gridAkt(berechnung.methode1(Window.feld));
         }
     }
