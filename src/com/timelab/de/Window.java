@@ -18,7 +18,7 @@ public class Window extends JFrame {
     private JPanel grid;
 
     public static int feld[][];
-    private int modus = 1; //1 start, 2 ende, 3 hindernis
+    private int modus = 1; //1 start, 2 ende, 3 hindernis, 4 pfad
 
     private boolean mouseActualPressed = false;
     private int actualGridSize;
