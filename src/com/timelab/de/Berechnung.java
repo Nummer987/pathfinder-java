@@ -2,6 +2,7 @@ package com.timelab.de;
 
 public class Berechnung {
 
+    //Test a field as an Barrier
     private boolean testeAufHindernis(int[][] p_array, int p_x, int p_y){
         if(p_array[p_x][p_y] != 3) {
             return true;
@@ -10,7 +11,7 @@ public class Berechnung {
             return false;
         }
     }
-
+    //Prints the Array in the Console
     public void arrayAusgeben(int[][] p_array){
         for(int i=0; i<p_array.length;i++){
             for(int j = 0; j<p_array.length;j++){
@@ -23,6 +24,7 @@ public class Berechnung {
         System.out.println();
     }
 
+    //First Pathfinding Solution
     public int[][] methode1(int[][] p_array){
         //Vars
         int startX = 0;
@@ -30,7 +32,7 @@ public class Berechnung {
         int endeX = 0;
         int endeY = 0;
 
-        //Es wird nach der Startpostion gesucht
+        //Searching for Startposition
         for(int i=0; i<p_array.length;i++){
             for(int j = 0; j<p_array.length;j++){
                 if(p_array[i][j] == 1){
@@ -39,7 +41,7 @@ public class Berechnung {
                 }
             }
         }
-        //Es wird nach der Endposition gesucht
+        //Search for Endposition
         for(int i=0; i<p_array.length;i++){
             for(int j = 0; j<p_array.length;j++){
                 if(p_array[i][j] == 2){
@@ -48,9 +50,11 @@ public class Berechnung {
                 }
             }
         }
-
+        //Current positions equals Startposition
         int positionX = startX;
         int positionY = startY;
+
+        //Calculate Dif between current position and endposition
         int difPosEndeX = endeX - positionX;
         int difPosEndeY = endeY - positionY;
 
@@ -59,7 +63,7 @@ public class Berechnung {
                 positionX = positionX + 1;
                 //Testen ob dort ein Hindernis ist
                 if (!testeAufHindernis(p_array, positionX, positionY)) {
-                    p_array[positionX][positionY] = 5;
+                       p_array[positionX][positionY] = 5;
                 } else {
                     p_array[positionX][positionY] = 4;
                 }
