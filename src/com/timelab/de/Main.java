@@ -8,7 +8,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("Pathfinder tool45");
+        System.out.println("Pathfinder tool60");
         new Window();
     }
 }
