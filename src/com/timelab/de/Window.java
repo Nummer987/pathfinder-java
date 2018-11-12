@@ -19,6 +19,8 @@ public class Window extends JFrame {
     public static int feld[][];
     private int modus = 1; //1 start, 2 ende, 3 hindernis
 
+    private boolean mouseActualPressed = false;
+
     public Window() {
         setLayout(null);
         setSize(640,540);
@@ -74,16 +76,18 @@ public class Window extends JFrame {
 
                     @Override
                     public void mousePressed(MouseEvent e) {
-
+                        mouseActualPressed = true;
                     }
 
                     @Override
                     public void mouseReleased(MouseEvent e) {
-
+                        mouseActualPressed = false;
                     }
 
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        if(!mouseActualPressed)
+                            return;
                         if(modus == 1) {
                             removeStart(p_size);
                             e.getComponent().setBackground(Color.GREEN);
@@ -205,7 +209,7 @@ public class Window extends JFrame {
         bModus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(bModus.getText().equals("Set start")) {
+                if(bModus.getText().equals("Set Start")) {
                     modus = 2;
                     bModus.setText("Set End");
                 }
@@ -215,7 +219,7 @@ public class Window extends JFrame {
                 }
                 else {
                     modus = 1;
-                    bModus.setText("Set start");
+                    bModus.setText("Set Start");
                 }
             }
         });
