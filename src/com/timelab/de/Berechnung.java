@@ -22,6 +22,7 @@ public class Berechnung {
     }
 
     public void methode1(int[][] p_array){
+        //Vars
         int startX = 0;
         int startY = 0;
         int endeX = 0;
@@ -54,6 +55,7 @@ public class Berechnung {
         while(difPosEndeX != 0 && difPosEndeY != 0) {
             if (difPosEndeX >= difPosEndeY) {
                 positionX = positionX + 1;
+                //Testen ob dort ein Hindernis ist
                 if(!testeAufHindernis(p_array, positionX, positionY)) {
                     p_array[positionX][positionY] = 5;
                 }
@@ -62,6 +64,7 @@ public class Berechnung {
                 }
             } else {
                 positionY = positionY + 1;
+                //Testen ob dort ein Hindernis ist
                 if(!testeAufHindernis(p_array, positionX, positionY)){
                     p_array[positionX][positionY] = 5;
                 }
