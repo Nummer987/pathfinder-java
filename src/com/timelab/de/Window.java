@@ -15,15 +15,19 @@ public class Window extends JFrame {
 
     public Window() {
         setLayout(new FlowLayout());
-        setVisible(true);
         setSize(400,400);
         setTitle("Pathfinder");
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         feld = new int[9][9];
         panels = new JPanel[9][9];
 
         addGrid();
         addMenu();
+
+        setVisible(true);
     }
 
     private void addGrid() {
