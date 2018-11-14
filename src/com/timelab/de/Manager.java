@@ -18,7 +18,7 @@ public class Manager implements ActionListener {
         if(e.getSource() == Window.bReset) { //clicked reset
             Window.clearGrid();
         } else if(e.getSource() == Window.bStart) { //clicked start
-            Window.gridAkt(berechnung.methode1(Window.feld));
+            Window.gridAkt(berechnung.aSternHV(Window.feld));
         }
     }
 }
